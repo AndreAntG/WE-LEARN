@@ -1,0 +1,28 @@
+ /* Change the color and background of carousel arrows */
+ .carousel-control-prev-icon,
+ .carousel-control-next-icon {
+   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+   border-radius: 50%; /* Make the background circular */
+ }
+
+ .carousel-control-prev-icon::after,
+ .carousel-control-next-icon::after {
+   content: ''; /* Prevent default arrows from showing */
+   display: inline-block;
+   width: 1.5rem;
+   height: 1.5rem;
+   border-style: solid;
+   border-width: 0.2rem 0.2rem 0 0;
+   transform: rotate(45deg);
+   color: white;
+ }
+
+ .carousel-control-prev-icon::after {
+   transform: rotate(-135deg); /* Rotate for the left arrow */
+   border-color: white;
+ }
+
+ .carousel-control-next-icon::after {
+   transform: rotate(45deg); /* Rotate for the right arrow */
+   border-color: white;
+ }

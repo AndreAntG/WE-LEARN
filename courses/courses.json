@@ -1,0 +1,88 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Introdução à Programação",
+      "description": "Aprenda os fundamentos da programação e comece a criar os seus próprios programas.",
+      "image": "assets/images/course1.jpeg",
+      "link": "#",
+      "modules": [
+        { "id": 1, "title": "Introdução à Lógica de Programação" },
+        { "id": 2, "title": "Variáveis e Tipos de Dados" },
+        { "id": 3, "title": "Estruturas de Controle" },
+        { "id": 4, "title": "Funções e Procedimentos" },
+        { "id": 5, "title": "Projeto Final" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Marketing Digital",
+      "description": "Domine as estratégias de marketing digital e amplie o alcance do seu negócio.",
+      "image": "assets/images/course2.jpeg",
+      "link": "#",
+      "modules": [
+        { "id": 1, "title": "Fundamentos de Marketing Digital" },
+        { "id": 2, "title": "SEO e Otimização de Sites" },
+        { "id": 3, "title": "Gestão de Redes Sociais" },
+        { "id": 4, "title": "Publicidade Online e PPC" },
+        { "id": 5, "title": "Análise e Mensuração de Resultados" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Design Gráfico",
+      "description": "Aprenda a criar designs profissionais com ferramentas de ponta.",
+      "image": "assets/images/course3.jpeg",
+      "link": "#",
+      "modules": [
+        { "id": 1, "title": "Fundamentos do Design" },
+        { "id": 2, "title": "Ferramentas Essenciais de Design" },
+        { "id": 3, "title": "Tipografia e Teoria das Cores" },
+        { "id": 4, "title": "Criação de Layouts" },
+        { "id": 5, "title": "Projeto Prático de Design" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Excel Avançado",
+      "description": "Aperfeiçoe as suas habilidades no Excel e torne-se um especialista em análise de dados.",
+      "image": "images/course4.jpg",
+      "link": "#",
+      "modules": [
+        { "id": 1, "title": "Revisão de Conceitos Básicos" },
+        { "id": 2, "title": "Fórmulas e Funções Avançadas" },
+        { "id": 3, "title": "Análise de Dados com Tabelas Dinâmicas" },
+        { "id": 4, "title": "Gráficos Avançados" },
+        { "id": 5, "title": "Macros e Automação" }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Aprenda Inglês",
+      "description": "Domine o inglês e abra novas portas para o seu futuro.",
+      "image": "images/course5.jpg",
+      "link": "#",
+      "modules": [
+        { "id": 1, "title": "Introdução ao Inglês" },
+        { "id": 2, "title": "Gramática Básica" },
+        { "id": 3, "title": "Conversação para Iniciantes" },
+        { "id": 4, "title": "Vocabulário Essencial" },
+        { "id": 5, "title": "Prática e Avaliação" }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Fotografia Profissional",
+      "description": "Descubra os segredos da fotografia e capture momentos incríveis.",
+      "image": "images/course6.jpg",
+      "link": "#",
+      "modules": [
+        { "id": 1, "title": "Introdução à Fotografia" },
+        { "id": 2, "title": "Configuração da Câmera" },
+        { "id": 3, "title": "Técnicas de Composição" },
+        { "id": 4, "title": "Edição de Fotos" },
+        { "id": 5, "title": "Projeto Prático de Fotografia" }
+      ]
+    }
+  ]
+}

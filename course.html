@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Curso</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+   <!-- Barra de Navegação -->
+   <nav class="navbar navbar-expand-lg">
+    <div class="container">
+     <!-- Logo with responsive classes -->
+     <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="assets/images/we.png" alt="We Learn Logo" class="img-fluid" style="height: 100px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Sobre Nós</a></li>
+          <li class="nav-item"><a class="nav-link" href="courses.html">Cursos</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacts.html">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+   <!-- Cabeçalho da Página -->
+   <header class="bg-dark text-white text-center py-5">
+    <div class="container">
+        <h1 id="course-title"></h1>
+        <p class="lead" id="course-description">Explore a nossa vasta seleção de cursos e aprenda algo novo hoje!</p>
+    </div>
+  </header>
+
+  <!-- Course Details Section -->
+  <section id="course-details" class="py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Course Image -->
+            <div class="col-md-6">
+              <img id="course-image" src="" alt="Course Image" class="img-fluid rounded shadow">
+            </div>
+      
+            <!-- Course Video -->
+            <div class="col-md-6">
+              <h4>Video Demonstration</h4>
+              <iframe id="course-video" width="100%" height="315" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+          </div>
+      
+          <!-- Course Description -->
+          <div class="mt-4">
+            <h3>Description</h3>
+            <p id="course-description">Course description goes here.</p>
+          </div>
+      
+          <!-- Modules Section -->
+          <div class="mt-4">
+            <h3>Modules</h3>
+            <ul id="course-modules" class="list-group">
+              <!-- Modules will be dynamically loaded here -->
+            </ul>
+          </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="js/main.js"></script>
+
+  <script>
+    $(document).ready(function() {
+     const urlParams = new URLSearchParams(window.location.search);
+     const courseId = urlParams.get('id');
+ 
+     if (courseId) {
+       loadCourseDetails(courseId);
+     }
+     function loadCourseDetails(courseId) {
+  // Load the JSON file containing all courses
+  $.ajax({
+    url: 'courses/courses.json', // Path to the JSON file with all courses
+    dataType: 'json',
+    success: function (data) {
+      // Find the course with the specified ID
+      const courseData = data.courses.find(course => course.id === parseInt(courseId));
+
+      if (courseData) {
+        // Display the course information
+        $('#course-title').text(courseData.title);
+        $('#course-description').text(courseData.description);
+        $('#course-modules').html(
+          courseData.modules.map(module => `<li>${module}</li>`).join('')
+        );
+      } else {
+        // Handle case where no course with the given ID is found
+        $('#course-title').text('Curso não encontrado.');
+        $('#course-description').text('');
+        $('#course-modules').html('');
+      }
+    },
+    error: function () {
+      // Handle errors (e.g., file not found)
+      $('#course-title').text('Erro ao carregar os cursos.');
+      $('#course-description').text('');
+      $('#course-modules').html('');
+    }
+  });
+}
+
+    }
+   );
+</script>
+</body>
+</html>
+

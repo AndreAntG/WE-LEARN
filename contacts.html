@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - We Learn</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    .error {
+      color: red;
+      font-size: 0.9rem;
+    }
+    .success {
+      color: green;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+     <!-- Barra de Navegação -->
+     <nav class="navbar navbar-expand-lg">
+        <div class="container">
+         <!-- Logo with responsive classes -->
+         <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="assets/images/we.png" alt="We Learn Logo" class="img-fluid" style="height: 100px;">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link active" href="index.html">Início</a></li>
+              <li class="nav-item"><a class="nav-link" href="about.html">Sobre Nós</a></li>
+              <li class="nav-item"><a class="nav-link" href="courses.html">Cursos</a></li>
+              <li class="nav-item"><a class="nav-link" href="contacts.html">Contacto</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+  <!-- Cabeçalho da Página -->
+  <header class="bg-dark text-white text-center py-5">
+    <div class="container">
+      <h1>Contacto</h1>
+      <p class="lead">Tem perguntas ou precisa de ajuda? Estamos aqui para si!</p>
+    </div>
+  </header>
+
+  <!-- Formulário de Contacto -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Entre em Contacto Connosco</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Informações de Contacto</h5>
+          <p><strong>Email:</strong> suporte@welearn.com</p>
+          <p><strong>Telefone:</strong> +351 123 456 789</p>
+          <p><strong>Morada:</strong> Rua de Aprender, 123, Lisboa, Portugal</p>
+        </div>
+        <div class="col-md-6">
+          <h5>Envie-nos uma Mensagem</h5>
+          <form id="contactForm" novalidate>
+            <div class="mb-3">
+              <label for="name" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="name" placeholder="Digite o seu nome" required>
+              <div class="error" id="nameError"></div>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="Digite o seu email" required>
+              <div class="error" id="emailError"></div>
+            </div>
+            <div class="mb-3">
+              <label for="subject" class="form-label">Assunto</label>
+              <input type="text" class="form-control" id="subject" placeholder="Digite o assunto" required>
+              <div class="error" id="subjectError"></div>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Mensagem</label>
+              <textarea class="form-control" id="message" rows="5" placeholder="Escreva a sua mensagem" required></textarea>
+              <div class="error" id="messageError"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+            <div class="success mt-3" id="successMessage" style="display: none;">Mensagem enviada com sucesso!</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="bg-dark text-white text-center py-3">
+    <p class="mb-0">&copy; 2025 We Learn. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <script src="js/main.js"></script>
+
+  <!-- Custom JS -->
+<script>
+    // Form Validation
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+  
+      // Clear previous errors
+      document.querySelectorAll(".error").forEach((el) => (el.textContent = ""));
+      document.getElementById("successMessage").style.display = "none";
+  
+      // Get form values
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const subject = document.getElementById("subject").value.trim();
+      const message = document.getElementById("message").value.trim();
+  
+      let valid = true;
+  
+      // Validation logic
+      if (name === "") {
+        document.getElementById("nameError").textContent = "O nome é obrigatório.";
+        valid = false;
+      }
+      if (email === "") {
+        document.getElementById("emailError").textContent = "O email é obrigatório.";
+        valid = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById("emailError").textContent = "O email não é válido.";
+        valid = false;
+      }
+      if (subject === "") {
+        document.getElementById("subjectError").textContent = "O assunto é obrigatório.";
+        valid = false;
+      }
+      if (message === "") {
+        document.getElementById("messageError").textContent = "A mensagem é obrigatória.";
+        valid = false;
+      } else if (message.length < 10) {
+        document.getElementById("messageError").textContent = "A mensagem deve ter pelo menos 10 caracteres.";
+        valid = false;
+      }
+  
+      // If valid, show success message
+      if (valid) {
+        document.getElementById("successMessage").style.display = "block";
+        document.getElementById("contactForm").reset(); // Reset form
+      }
+    });
+  
+</script>
+</body>
+</html>
