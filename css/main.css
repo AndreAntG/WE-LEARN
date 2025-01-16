@@ -26,3 +26,26 @@
    transform: rotate(45deg); /* Rotate for the right arrow */
    border-color: white;
  }
+
+ .error {
+  color: red;
+  font-size: 0.9rem;
+}
+.success {
+  color: green;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body .card-text {
+  flex-grow: 1; /* Push the button to the bottom */
+}
+
+.card-body .btn {
+  margin-top: auto; /* Adds spacing and ensures consistent alignment */
+}

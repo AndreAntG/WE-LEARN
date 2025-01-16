@@ -10,6 +10,8 @@
   
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/main.css">
+  <!-- ANIMATE CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
 
@@ -35,44 +37,54 @@
   </nav>
 
    <!-- Cabeçalho da Página -->
-   <header class="bg-dark text-white text-center py-5">
+   <header class="bg-dark text-white text-center py-5 animate__animated animate__fadeIn">
     <div class="container">
         <h1 id="course-title"></h1>
-        <p class="lead" id="course-description">Explore a nossa vasta seleção de cursos e aprenda algo novo hoje!</p>
+        <p class="lead" id="course-description"></p>.   
+        <div class="col-md-12">
+          <img id="course-image" src="" alt="Course Image" class="img-fluid rounded shadow">
+        </div>
     </div>
   </header>
 
   <!-- Course Details Section -->
-  <section id="course-details" class="py-5">
+  <section id="course-details" class="py-5 animate__animated animate__fadeIn">
     <div class="container">
+      <hr>
         <div class="row">
-            <!-- Course Image -->
-            <div class="col-md-6">
-              <img id="course-image" src="" alt="Course Image" class="img-fluid rounded shadow">
-            </div>
-      
-            <!-- Course Video -->
-            <div class="col-md-6">
-              <h4>Video Demonstration</h4>
-              <iframe id="course-video" width="100%" height="315" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            </div>
-          </div>
-      
-          <!-- Course Description -->
-          <div class="mt-4">
-            <h3>Description</h3>
-            <p id="course-description">Course description goes here.</p>
-          </div>
-      
-          <!-- Modules Section -->
-          <div class="mt-4">
-            <h3>Modules</h3>
-            <ul id="course-modules" class="list-group">
-              <!-- Modules will be dynamically loaded here -->
-            </ul>
-          </div>
+         
+       <!-- Course Description -->
+       <div class="mt-4">
+        <h3>Detalhes</h3>
+        <p id="course-large-description">Course description goes here.</p>
+      </div>
+        </div>
+        <hr>
+      <div class="row">
+ <!-- Modules Section -->
+ <div class="col-md-6">
+  <h3>Módulos</h3>
+  <ul id="course-modules" class="list-group">
+    <!-- Modules will be dynamically loaded here -->
+  </ul>
+</div>
+ <!-- Course Video -->
+ <div class="col-md-6">
+  <h4>Video</h4>
+  <iframe frameborder="0"  width="560" height="315"  id="course-video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div>
+</div>
+      </div>
     </div>
   </section>
+    <!-- Secção de Call to Action -->
+    <section id="cta" class="text-white text-center bg-dark py-5 animate__animated animate__fadeIn">
+      <div class="container">
+        <h2>Pronto para começar a aprender?</h2>
+        <p class="lead">Junte-se a milhares de alunos que já estão a progredir nas suas carreiras.</p>
+        <a href="contacts.html" class="btn btn-primary btn-lg">Comece Agora</a>
+      </div>
+    </section>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -101,13 +113,36 @@
       const courseData = data.courses.find(course => course.id === parseInt(courseId));
 
       if (courseData) {
+
         // Display the course information
         $('#course-title').text(courseData.title);
         $('#course-description').text(courseData.description);
+        $('#course-large-description').text(courseData.large_description)
         $('#course-modules').html(
-          courseData.modules.map(module => `<li>${module}</li>`).join('')
-        );
+          courseData.modules.map(module => `<li>${module}</li>`).join('')        );
+
+      // If the course has a video URL, embed it
+      if (courseData.image) {
+        $('#course-image').attr('src', courseData.image);
       } else {
+        $('#course-image').hide(); // Hide the video section if no video is available
+      }
+
+      // If the course has a video URL, embed it
+      if (courseData.link) {
+        $('#course-video').attr('src', courseData.link);
+      } else {
+        $('#course-video').hide(); // Hide the video section if no video is available
+      }
+
+      // Populate the modules list
+      $('#course-modules').html(
+        courseData.modules
+          .map(module => `<li class="list-group-item">${module.id}. ${module.title}</li>`)
+          .join('')
+      );
+      
+        } else {
         // Handle case where no course with the given ID is found
         $('#course-title').text('Curso não encontrado.');
         $('#course-description').text('');
